@@ -10,8 +10,8 @@ import { BsGrid1X2Fill, BsXDiamond } from "react-icons/bs"
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 // import ArrowRight from '../../../assets/main-slider-arrow1.png'
-import ArrowRight from '../../../assets/main-slider-arrow1.png'
-import ArrowLeft from '../../../assets/main-slider-arrow2.png'
+// import ArrowRight from '../../../assets/main-slider-arrow1.png'
+// import ArrowLeft from '../../../assets/main-slider-arrow2.png'
 
 
 
@@ -57,7 +57,7 @@ function ComicSliderDetails() {
           <>
             {currentSlide !== 0 && (
               <div className={className} onClick={onClick}>
-                <Image src={ArrowLeft} boxSize='50px'/>
+                {/* <Image src={ArrowLeft} boxSize='50px'/> */}
                 {/* <AiOutlineClose style={{ color: 'blue', fontSize: '30px' }} /> */}
               </div>
             )}
@@ -70,7 +70,7 @@ function ComicSliderDetails() {
           <>
             {currentSlide !== slideCount - 1 && (
               <div className={className} onClick={onClick}>
-                <Image src={ArrowRight} boxSize='50px' />
+                {/* <Image src={ArrowRight} boxSize='50px' /> */}
 
                 {/* <ArrowForwardIos style={{ color: 'blue', fontSize: '30px' }} /> */}
               </div>
