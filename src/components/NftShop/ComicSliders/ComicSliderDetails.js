@@ -9,8 +9,8 @@ import { HiOutlineDeviceMobile, HiArrowSmLeft, HiArrowSmRight } from "react-icon
 import { BsGrid1X2Fill, BsXDiamond } from "react-icons/bs"
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
-import ArrowRight from '../././assets/main-slider-arrow1.png'
-import ArrowLeft from '../././assets/main-slider-arrow2.png'
+import ArrowRight from '../../../assets/main-slider-arrow1.png'
+import ArrowLeft from '../../../assets/main-slider-arrow2.png'
 
 
 
