@@ -5,6 +5,7 @@ import comicDetails from '../../../assets/comics.json'
 import { Flex, Image, Button, Text, Input, useMediaQuery} from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineClose } from "react-icons/ai"
+import { ImCross } from "react-icons/im"
 import { AiOutlineZoomIn, AiOutlineZoomOut } from "react-icons/ai"
 import { MdRestore } from "react-icons/md"
 import { HiOutlineDeviceMobile, HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi"
@@ -15,7 +16,7 @@ import 'react-medium-image-zoom/dist/styles.css'
 import ArrowRight from '../../../assets/right-arrow-main-slider.png'
 
 import ArrowLeft from '../../../assets/left-arrow-main-slider.png'
-import CrossIcon from '../../../assets/Cross-icon.png'
+// import CrossIcon from '../../../assets/Cross-icon.png'
 
 function ComicSliderDetails() {
   const [scale, setScale] = useState(1);
@@ -266,7 +267,7 @@ const browseSlidermobile = {
             <div className='cross-main'>
             <Flex fontSize='5xl' justifyContent={'end'} zIndex='10'>
                 <Button onClick={() => { navigate('/nftshop') }} opacity={0} position= 'absolute' className='close-button-0' zIndex='10' w='500px' mt='20px'></Button>
-              <Button className='close-button' fontSize='5xl' bgColor={"transparent"} color={ "white"} mt='20px'  position= 'absolute' zIndex='11' mr={10} ><Image src={CrossIcon} color='yellow' onClick={() => { navigate('/nftshop') }} className='cross-logo'  position= 'absolute'  /></Button>
+              <Button className='close-button' fontSize={['xl','2xl','3xl','3xl']} bgColor={"transparent"} color={ "white"} mt='20px'  position= 'absolute' zIndex='11' mr={[1,5,5,10]} ><ImCross color='yellow' onClick={() => { navigate('/nftshop') }} className='cross-logo'  position= 'absolute'  /></Button>
             </Flex>
             </div>
             {/* Main Comic slider */}
@@ -343,30 +344,30 @@ const browseSlidermobile = {
 
                       <Flex flexDir={'row'} justifyContent='space-between' alignItems='center' w='100%'>
 
-                        <Flex align={'center'} justifyContent={["flex-start", "flex-start", "flex-end", "flex-end"]} w={['50%', '50%', '60.75%', '62%']}>
+                        <Flex align={'center'} flexWrap='wrap' justifyContent={["flex-start", "flex-start", "flex-end", "flex-end"]} w={['50%', '50%', '60.75%', '62%']}>
                           <Button onClick={handleChangePageView} className={pannelViewIsActive ? 'button-active' : 'navigation-bottom-button'} ml={1} bgColor={"transparent"} title="Page view" ><HiOutlineDeviceMobile size={'22px'} color='white'/></Button>
                           <Button onClick={handleClickShowBrowseSlide} className={browseViewIsActive ? 'button-active' : 'navigation-bottom-button'} ml={1} bgColor={"transparent"} title="Browse pages"><BsXDiamond size={'22px'} color='white'/></Button>                         
-                          <Button onClick={handleChangeGuidedView} className={guidedViewIsActive ? 'button-active' : 'navigation-bottom-button'} ml={1} bgColor={"transparent"} title="Guided view" ><BsGrid1X2Fill size={'22px'} color='white' /></Button>
+                          <Button onClick={handleChangeGuidedView} className={guidedViewIsActive ? 'button-active' : 'navigation-bottom-button'} ml={1} bgColor={"transparent"} title="Guided view"  ><BsGrid1X2Fill size={'22px'}  color='white' /></Button>
                           {/* <Button onClick={handleZoomIn}>Zoom In</Button> */}
         {/* <Button onClick={handleZoomOut}>Zoom Out</Button> */}
         {zoomButtons === true ? (
-        <Flex gap={2}>
-        <AiOutlineZoomIn onClick={handleZoomIn} title='zoom-in' color='white' size={'22px'} cursor='pointer' />
-        <AiOutlineZoomOut onClick={handleZoomOut} title='zoom-out' color='white' size={'22px'} cursor='pointer'/>
-        <MdRestore onClick={handleReset} title='reset-zoom' color='white' size={'22px'} cursor='pointer'/>
+        <Flex gap={2} mt={['10px','0','0','0']} ml={['10px','0','0','0']}>
+        <AiOutlineZoomIn onClick={handleZoomIn}  title='zoom-in' color='white' size={'22px'} cursor='pointer' />
+        <AiOutlineZoomOut onClick={handleZoomOut}  title='zoom-out' color='white' size={'22px'} cursor='pointer'/>
+        <MdRestore onClick={handleReset}  title='reset-zoom' color='white' size={'22px'} cursor='pointer'/>
         </Flex>
       ) : (
-        <Flex gap={2}>
-        <AiOutlineZoomIn  title='zoom-in' color='white' size={'22px'} cursor='not-allowed' />
-        <AiOutlineZoomOut  title='zoom-out' color='white' size={'22px'} cursor='not-allowed'/>
-        <MdRestore title='reset-zoom' color='white' size={'22px'} cursor='not-allowed'/>
+        <Flex gap={2} mt={['10px','0','0','0']} ml={['10px','0','0','0']}>
+        <AiOutlineZoomIn   title='zoom-in' color='white' size={'22px'} cursor='not-allowed' />
+        <AiOutlineZoomOut   title='zoom-out' color='white' size={'22px'} cursor='not-allowed'/>
+        <MdRestore  title='reset-zoom' color='white' size={'22px'} cursor='not-allowed'/>
         </Flex>
       )}
         
                         </Flex>
                         
-                        <Flex justifyContent='end' w={['55%', '55%', '47%', '47%']} alignItems={'center'}>
-                          <Button onClick={() => openFullscreen()} z-index='1'>Open Fullscreen</Button>
+                        <Flex justifyContent='end' w={['35%', '55%', '47%', '47%']} alignItems={'center'}>
+                          <Button onClick={() => openFullscreen()} z-index='1' fontSize={['14px','14px','16px','16px']}>Open Fullscreen</Button>
                         </Flex>
                         
                         
