@@ -23,6 +23,7 @@ function ComicSliderDetails() {
   const [offsetY, setOffsetY] = useState(0);
   const imageRef = useRef(null);
   const [zoomButtons, setZoomButtons] = useState(true)
+  const [cursorHand, setCursorHand] = useState(false)
 
 
 
@@ -69,7 +70,7 @@ function ComicSliderDetails() {
           <>
             {currentSlide !== 0 && (
               <div className={className} onClick={onClick}>
-                <Image src={ArrowLeft} boxSize='50px'/>
+                <Image src={ArrowLeft} boxSize='35px'/>
                 {/* <AiOutlineClose style={{ color: 'blue', fontSize: '30px' }} /> */}
               </div>
             )}
@@ -82,7 +83,7 @@ function ComicSliderDetails() {
           <>
             {currentSlide !== slideCount - 1 && (
               <div className={className} onClick={onClick}>
-                <Image src={ArrowRight} boxSize='50px' />
+                <Image src={ArrowRight} boxSize='35px' />
 
                 {/* <ArrowForwardIos style={{ color: 'blue', fontSize: '30px' }} /> */}
               </div>
@@ -235,6 +236,8 @@ const browseSlidermobile = {
       if (scale > 0.5) {
         setScale(scale - 0.1);
       }
+    setCursorHand(false);
+
     
     // else {
     //   return setScale(1);
@@ -243,10 +246,13 @@ const browseSlidermobile = {
 
   const handleReset = () => {
     setScale(1);
+    setCursorHand(false);
+
     // setPosition({ x: 0, y: 0 });
   };
   const handleMouseDown = (event) => {
-    const startY = event.clientY;
+    if (scale > 1) {
+      const startY = event.clientY;
     const onMouseMove = (event) => {
       const deltaY = event.clientY - startY;
       setOffsetY(offsetY + deltaY);
@@ -255,7 +261,12 @@ const browseSlidermobile = {
     document.addEventListener("mouseup", () => {
       document.removeEventListener("mousemove", onMouseMove);
     });
+
+    setCursorHand(true);
+    } 
   };
+
+  
   
   return (
 
@@ -276,8 +287,8 @@ const browseSlidermobile = {
                 {sliderImage.map((item, index) => (
                   // <div>
                     <Flex key={Math.random().toString()} mr='0.2rem' justifyContent={'center'}>
-                        <div  className='main-div-slider'>
-                        <Image onMouseDown={handleMouseDown} ref={imageRef}  style={{ transform: `scale(${scale}) translateY(${offsetY}px)`, cursor: 'grab' }} id="pic" zIndex='100' src={item.url} h={["auto", "auto", "97.7vh", "97.7vh"]} alt="comic" className='ful-page-slider-images' width={'auto'} max-height='100vh' max-width={'100vw'}  ml={'0.2rem'} pr={'0.3rem'} mt={["0", "0", "2", "2"]}></Image>
+                        <div   className='main-div-slider'>
+                        <Image onMouseDown={handleMouseDown} ref={imageRef}  style={{ transform: `scale(${scale}) translateY(${offsetY}px)`, cursor: cursorHand ? "grab" : "context-menu",}} id="pic" zIndex='100' src={item.url} h={["auto", "auto", "97.7vh", "97.7vh"]} alt="comic" className='ful-page-slider-images' width={'auto'} max-height='100vh' max-width={'100vw'}  ml={'0.2rem'} pr={'0.3rem'} mt={["0", "0", "2", "2"]}></Image>
                               {/* <Image id="pic" zIndex='100' src={item.url} h={["auto", "auto", "97.7vh", "97.7vh"]} alt="comic" className='ful-page-slider-images' width={'auto'} max-height='100vh' max-width={'100vw'}  ml={'0.2rem'} pr={'0.3rem'} mt={["0", "0", "2", "2"]}></Image> */}
                          </div>
                     </Flex>
