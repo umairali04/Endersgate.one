@@ -247,11 +247,12 @@ const browseSlidermobile = {
   const handleReset = () => {
     setScale(1);
     setCursorHand(false);
+    setOffsetY(0);
 
     // setPosition({ x: 0, y: 0 });
   };
   const handleMouseDown = (event) => {
-    if (scale > 1) {
+    if (scale > 1 || scale < 2) {
       const startY = event.clientY;
     const onMouseMove = (event) => {
       const deltaY = event.clientY - startY;
