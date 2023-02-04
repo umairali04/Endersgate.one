@@ -993,6 +993,7 @@ input:focus {
  height: 99.3vh;
  align-items: center;
  margin-right: 0.2rem;
+ overflow: hidden;
 }
 
 /* @media only screen and (max-width: 767px) {
@@ -1077,3 +1078,23 @@ input:focus {
     align-items: center !important;
   }
   /* sadsadsadsad */
+
+
+
+
+
+  /* input[type=checkbox] {
+    display: none;
+  }
+  
+  .main-div-slider img {
+    transition: transition 0.25s ease;
+    cursor: zoom-in;
+  }
+  
+  input[type=checkbox]:checked ~ label > img {
+    transform: scale(2);
+    cursor: zoom-out;
+  } */
+
+
