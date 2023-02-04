@@ -178,7 +178,10 @@ const browseSlidermobile = {
         setPannelViewIsActive(false);
         setPageOrPannal('Pannal')
         setGuidedViewIsActive(current => !current);
-        setZoomButtons(false)
+        setZoomButtons(false);
+        setOffsetY(0);
+        setScale(1);
+
       };
 
       const handleChangePageView = event => {
