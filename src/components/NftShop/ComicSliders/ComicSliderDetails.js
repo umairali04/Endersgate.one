@@ -4,19 +4,15 @@ import Slider from "react-slick";
 import comicDetails from '../../../assets/comics.json'
 import { Flex, Image, Button, Text, Input, useMediaQuery} from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
-import { AiOutlineClose } from "react-icons/ai"
 import { ImCross } from "react-icons/im"
 import { AiOutlineZoomIn, AiOutlineZoomOut } from "react-icons/ai"
 import { MdRestore } from "react-icons/md"
 import { HiOutlineDeviceMobile, HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi"
 import { BsGrid1X2Fill, BsXDiamond } from "react-icons/bs"
-import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
-// import ArrowRight from '../../../assets/main-slider-arrow1.png'
 import ArrowRight from '../../../assets/right-arrow-main-slider.png'
 
 import ArrowLeft from '../../../assets/left-arrow-main-slider.png'
-// import CrossIcon from '../../../assets/Cross-icon.png'
 
 function ComicSliderDetails() {
   const [scale, setScale] = useState(1);
@@ -33,13 +29,9 @@ function ComicSliderDetails() {
     const [ moveToSlide, setMoveToSlide ] = useState()
     const [searchIndexSlide, setSearchIndexSlide] = useState('');
     const [slider, setSlider] = useState('');
-
-
     const [pannelViewIsActive, setPannelViewIsActive] = useState(true);
     const [browseViewIsActive, setBrowseViewIsActive] = useState(false);
     const [guidedViewIsActive, setGuidedViewIsActive] = useState(false);
-
-    // const [isGuidedViewEnabled, setIsGuidedViewEnabled] = useState(false);
     const [pageOrPannal, setPageOrPannal] = useState('Page');
     const [isShown, setIsShown] = useState(false);
 
@@ -71,7 +63,6 @@ function ComicSliderDetails() {
             {currentSlide !== 0 && (
               <div className={className} onClick={onClick}>
                 <Image src={ArrowLeft} boxSize='35px'/>
-                {/* <AiOutlineClose style={{ color: 'blue', fontSize: '30px' }} /> */}
               </div>
             )}
           </>
@@ -84,8 +75,6 @@ function ComicSliderDetails() {
             {currentSlide !== slideCount - 1 && (
               <div className={className} onClick={onClick}>
                 <Image src={ArrowRight} boxSize='35px' />
-
-                {/* <ArrowForwardIos style={{ color: 'blue', fontSize: '30px' }} /> */}
               </div>
             )}
           </>
@@ -176,7 +165,7 @@ const browseSlidermobile = {
       const handleChangeGuidedView = event => {
         setSliderImage(comicImage.pages_pannels.filter(pannal => pannal.isPannal === true));
         setPannelViewIsActive(false);
-        setPageOrPannal('Pannal')
+        setPageOrPannal('Panel')
         setGuidedViewIsActive(current => !current);
         setZoomButtons(false);
         setOffsetY(0);
@@ -184,14 +173,17 @@ const browseSlidermobile = {
 
       };
 
+      
+
       const handleChangePageView = event => {
         {setSliderImage(comicImage.pages_pannels.filter(pannal => pannal.isPannal === false))};
-
+        slider.slickGoTo(0)
         setGuidedViewIsActive(false);
         setPannelViewIsActive(current => !current);
-        setPageOrPannal('Page')
-        setZoomButtons(true)
-        
+        setPageOrPannal('Page');
+        setZoomButtons(true);
+        setCurrentSlide(1);
+        // setPageViewSliderGoToFirstSlider();  
       };
 
       const handleClick = () => {
@@ -255,7 +247,7 @@ const browseSlidermobile = {
     // setPosition({ x: 0, y: 0 });
   };
   const handleMouseDown = (event) => {
-    if (scale > 1 || scale < 2) {
+    if (scale > 1) {
       const startY = event.clientY;
     const onMouseMove = (event) => {
       const deltaY = event.clientY - startY;
@@ -269,13 +261,10 @@ const browseSlidermobile = {
     setCursorHand(true);
     } 
   };
-
+  
   
   
   return (
-
-    
-    
     <div style={{backgroundColor: '#000000', position: 'relative' }}>
         <div className='full-page-slider main-container-md'>
         {/* <Button w='1089px' h='53px' opacity={0} zIndex={10} mt='20px' onClick={() => { navigate('/nftshop') }}  position= 'absolute' z-index='10' ></Button> */}
@@ -292,7 +281,7 @@ const browseSlidermobile = {
                   // <div>
                     <Flex key={Math.random().toString()} mr='0.2rem' justifyContent={'center'}>
                         <div   className='main-div-slider'>
-                        <Image onMouseDown={handleMouseDown} ref={imageRef}  style={{ transform: `scale(${scale}) translateY(${offsetY}px)`, cursor: cursorHand ? "grab" : "context-menu",}} id="pic" zIndex='100' src={item.url} h={["auto", "auto", "97.7vh", "97.7vh"]} alt="comic" className='ful-page-slider-images' width={'auto'} max-height='100vh' max-width={'100vw'}  ml={'0.2rem'} pr={'0.3rem'} mt={["0", "0", "2", "2"]}></Image>
+                        <Image src={item.url} onMouseDown={handleMouseDown} ref={imageRef}  style={{ transform: `scale(${scale}) translateY(${offsetY}px)`, cursor: cursorHand ? "grab" : "context-menu",}} id="pic" zIndex='100'  h={["auto", "auto", "97.7vh", "97.7vh"]} alt="comic" className='ful-page-slider-images' width={'auto'} max-height='100vh' max-width={'100vw'}  ml={'0.2rem'} pr={'0.3rem'} mt={["0", "0", "2", "2"]}></Image>
                               {/* <Image id="pic" zIndex='100' src={item.url} h={["auto", "auto", "97.7vh", "97.7vh"]} alt="comic" className='ful-page-slider-images' width={'auto'} max-height='100vh' max-width={'100vw'}  ml={'0.2rem'} pr={'0.3rem'} mt={["0", "0", "2", "2"]}></Image> */}
                          </div>
                     </Flex>
